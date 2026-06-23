@@ -24,9 +24,17 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" id="progress-path" />
         </svg>
     </div>
+    <!-- SVG Gooey Filter -->
+    <svg style="position: absolute; width: 0; height: 0; visibility: hidden;">
+        <filter id="gooey">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+        </filter>
+    </svg>
 
-
-
+    <!-- Water Trail Container -->
+    <div id="water-container"></div>
     <!-- Header -->
     <header id="header">
         <div class="container nav-container">
@@ -666,6 +674,71 @@
                 }, 2000);
             });
         });
+
+        // 14. Water Liquid Trail
+        const waterContainer = document.getElementById('water-container');
+        const numDrops = 15;
+        const drops = [];
+        let currentMouse = { x: window.innerWidth/2, y: window.innerHeight/2 };
+
+        for (let i = 0; i < numDrops; i++) {
+            const drop = document.createElement('div');
+            drop.classList.add('water-drop');
+            waterContainer.appendChild(drop);
+            drops.push({
+                element: drop,
+                x: currentMouse.x,
+                y: currentMouse.y,
+                vx: 0,
+                vy: 0
+            });
+        }
+
+        function updateWaterTrail() {
+            currentMouse.x = lastMouseX;
+            currentMouse.y = lastMouseY;
+
+            // Check hover states to hide water when hovering buttons or magnifying
+            const isHovering = cursorRing?.classList.contains('hovered');
+            const isMagnifying = cursorRing?.classList.contains('magnifying');
+            
+            if (isHovering || isMagnifying) {
+                waterContainer.style.opacity = '0';
+            } else {
+                waterContainer.style.opacity = '1';
+            }
+
+            for (let i = 0; i < numDrops; i++) {
+                const drop = drops[i];
+                let targetX, targetY;
+
+                if (i === 0) {
+                    targetX = currentMouse.x;
+                    targetY = currentMouse.y;
+                } else {
+                    targetX = drops[i - 1].x;
+                    targetY = drops[i - 1].y;
+                }
+
+                const dx = targetX - drop.x;
+                const dy = targetY - drop.y;
+                
+                drop.vx += dx * 0.45;
+                drop.vy += dy * 0.45;
+                drop.vx *= 0.65; // friction
+                drop.vy *= 0.65;
+                
+                drop.x += drop.vx;
+                drop.y += drop.vy;
+
+                // Scale down slightly towards the end of the tail
+                const scale = Math.max(0.2, 1 - (i / (numDrops * 1.5)));
+                drop.element.style.transform = `translate(${drop.x}px, ${drop.y}px) scale(${scale})`;
+            }
+
+            requestAnimationFrame(updateWaterTrail);
+        }
+        updateWaterTrail();
     </script>
 </body>
 </html>
