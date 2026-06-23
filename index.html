@@ -25,13 +25,7 @@
         </svg>
     </div>
 
-    <!-- Voice Command Button -->
-    <button id="voice-btn" class="magnetic" title="Click to speak command (e.g. 'skills', 'hire saurav')">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-        </svg>
-    </button>
+
 
     <!-- Header -->
     <header id="header">
@@ -471,49 +465,7 @@
             animateCanvas();
         }
 
-        // 9. Voice Command Navigation
-        const voiceBtn = document.getElementById('voice-btn');
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SpeechRecognition) {
-            const recognition = new SpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            
-            let isRecognizing = false;
-            
-            voiceBtn.addEventListener('click', () => {
-                if (isRecognizing) {
-                    try { recognition.stop(); } catch(e) {}
-                    return;
-                }
-                try {
-                    recognition.start();
-                    isRecognizing = true;
-                    voiceBtn.classList.add('listening');
-                } catch(e) {
-                    console.error("Speech Recognition Error:", e);
-                }
-            });
 
-            recognition.onresult = (event) => {
-                const command = event.results[0][0].transcript.toLowerCase();
-                console.log("Voice Command:", command);
-                if (command.includes('about')) document.getElementById('about').scrollIntoView({behavior: 'smooth'});
-                else if (command.includes('skill')) document.getElementById('skills').scrollIntoView({behavior: 'smooth'});
-                else if (command.includes('project')) document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
-                else if (command.includes('education')) document.getElementById('education').scrollIntoView({behavior: 'smooth'});
-                else if (command.includes('hire') || command.includes('contact') || command.includes('email')) {
-                    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=sauravsingh98866@gmail.com', '_blank');
-                }
-            };
-            
-            recognition.onend = () => {
-                isRecognizing = false;
-                voiceBtn.classList.remove('listening');
-            };
-        } else {
-            voiceBtn.style.display = 'none';
-        }
 
         // 10. Konami Code (Cyberpunk Mode)
         const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
