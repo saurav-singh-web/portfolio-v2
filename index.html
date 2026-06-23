@@ -739,6 +739,137 @@
             requestAnimationFrame(updateWaterTrail);
         }
         updateWaterTrail();
+
+        // 15. Gravity / Physics Destruction Mode (Matter.js)
+        let isGravityActive = false;
+        const gravityCodeStr = 'gravity';
+        let gravityKeyIndex = 0;
+
+        window.addEventListener('keydown', (e) => {
+            if (isGravityActive) return;
+            if (e.key.toLowerCase() === gravityCodeStr[gravityKeyIndex]) {
+                gravityKeyIndex++;
+                if (gravityKeyIndex === gravityCodeStr.length) {
+                    activateGravity();
+                }
+            } else {
+                gravityKeyIndex = 0;
+            }
+        });
+
+        function activateGravity() {
+            isGravityActive = true;
+            document.body.style.overflow = 'hidden';
+            
+            if (!window.Matter) {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js';
+                script.onload = initPhysics;
+                document.body.appendChild(script);
+            } else {
+                initPhysics();
+            }
+        }
+
+        function initPhysics() {
+            const Engine = Matter.Engine,
+                  Runner = Matter.Runner,
+                  Bodies = Matter.Bodies,
+                  Composite = Matter.Composite,
+                  Mouse = Matter.Mouse,
+                  MouseConstraint = Matter.MouseConstraint;
+
+            const engine = Engine.create();
+            const world = engine.world;
+            
+            // Create an invisible overlay for mouse interaction
+            const mouseOverlay = document.createElement('div');
+            mouseOverlay.style.position = 'fixed';
+            mouseOverlay.style.top = '0';
+            mouseOverlay.style.left = '0';
+            mouseOverlay.style.width = '100vw';
+            mouseOverlay.style.height = '100vh';
+            mouseOverlay.style.zIndex = '9997'; // Below cursor rings
+            document.body.appendChild(mouseOverlay);
+
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            const thickness = 100;
+            const ground = Bodies.rectangle(width/2, height + thickness/2, width*2, thickness, { isStatic: true });
+            const leftWall = Bodies.rectangle(-thickness/2, height/2, thickness, height*2, { isStatic: true });
+            const rightWall = Bodies.rectangle(width + thickness/2, height/2, thickness, height*2, { isStatic: true });
+
+            Composite.add(world, [ground, leftWall, rightWall]);
+
+            // Select explicit top-level block elements
+            const selectors = [
+                '.nav-container',
+                '.hero-content h1', '.hero-content h2', '.hero-content p', '.hero-content .btn-primary',
+                '.about-content', '.section-title',
+                '.marquee-content .chip', // Select the individual chips instead of container
+                '.project-card',
+                '.contact-content p', '.contact-info'
+            ];
+            
+            const rawTargets = document.querySelectorAll(selectors.join(', '));
+            const bodiesData = [];
+
+            rawTargets.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                // Only physics-enable elements that are somewhat visible on screen initially
+                // Or just everything. Let's include everything with valid height.
+                if (rect.width > 0 && rect.height > 0) {
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+                    
+                    const body = Bodies.rectangle(cx, cy, rect.width, rect.height, {
+                        restitution: 0.6,
+                        friction: 0.1,
+                        density: 0.002
+                    });
+                    
+                    bodiesData.push({ el, body, width: rect.width, height: rect.height, origX: rect.left, origY: rect.top });
+                }
+            });
+
+            bodiesData.forEach(data => {
+                data.el.style.boxSizing = 'border-box';
+                data.el.style.margin = '0';
+                data.el.style.position = 'fixed';
+                data.el.style.width = data.width + 'px';
+                data.el.style.height = data.height + 'px';
+                data.el.style.top = '0';
+                data.el.style.left = '0';
+                data.el.style.zIndex = '9996';
+                data.el.style.transition = 'none'; // Critical for performance
+                data.el.style.transform = `translate(${data.origX}px, ${data.origY}px)`;
+            });
+
+            Composite.add(world, bodiesData.map(b => b.body));
+
+            const mouse = Mouse.create(mouseOverlay);
+            const mConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.2,
+                    render: { visible: false }
+                }
+            });
+            Composite.add(world, mConstraint);
+
+            Matter.Events.on(engine, 'afterUpdate', function() {
+                bodiesData.forEach(data => {
+                    const { x, y } = data.body.position;
+                    const angle = data.body.angle;
+                    const tx = x - data.width / 2;
+                    const ty = y - data.height / 2;
+                    data.el.style.transform = `translate(${tx}px, ${ty}px) rotate(${angle}rad)`;
+                });
+            });
+
+            Runner.run(Runner.create(), engine);
+        }
     </script>
 </body>
 </html>
