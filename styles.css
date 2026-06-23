@@ -592,7 +592,7 @@ footer {
   transform: translate(-50%, -50%);
   z-index: 9999;
   pointer-events: none;
-  transition: width 0.3s, height 0.3s, background-color 0.3s;
+  transition: width 0.3s, height 0.3s, background-color 0.3s, backdrop-filter 0.3s;
 }
 
 .cursor-ring.hovered {
@@ -600,6 +600,18 @@ footer {
   height: 50px;
   background-color: rgba(139, 92, 246, 0.2);
   mix-blend-mode: screen;
+}
+
+.cursor-ring.magnifying {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  mix-blend-mode: normal;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 /* 5. Marquee */

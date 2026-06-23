@@ -363,6 +363,71 @@
             target.addEventListener('mouseleave', () => cursorRing?.classList.remove('hovered'));
         });
 
+        // 6b. Magnifying Glass Cursor Logic
+        const textElements = document.querySelectorAll('h1, h2, h3, p');
+        let activeMagnifierClone = null;
+
+        textElements.forEach(el => {
+            el.addEventListener('mouseenter', (e) => {
+                if (!cursorRing) return;
+                cursorRing.classList.add('magnifying');
+                
+                activeMagnifierClone = el.cloneNode(true);
+                
+                // Style the clone to look good inside the ring
+                activeMagnifierClone.style.position = 'absolute';
+                activeMagnifierClone.style.margin = '0';
+                activeMagnifierClone.style.pointerEvents = 'none';
+                activeMagnifierClone.style.width = el.offsetWidth + 'px';
+                activeMagnifierClone.style.color = '#fff'; 
+                activeMagnifierClone.style.transformOrigin = '0 0';
+                activeMagnifierClone.style.transform = 'scale(1.5)';
+                activeMagnifierClone.style.zIndex = '1';
+                
+                // Keep class styling but remove id if any to prevent duplicates
+                activeMagnifierClone.removeAttribute('id');
+                
+                // Ensure text formatting matches exactly
+                const computed = window.getComputedStyle(el);
+                activeMagnifierClone.style.fontFamily = computed.fontFamily;
+                activeMagnifierClone.style.fontSize = computed.fontSize;
+                activeMagnifierClone.style.fontWeight = computed.fontWeight;
+                activeMagnifierClone.style.lineHeight = computed.lineHeight;
+                activeMagnifierClone.style.letterSpacing = computed.letterSpacing;
+                activeMagnifierClone.style.textTransform = computed.textTransform;
+
+                cursorRing.appendChild(activeMagnifierClone);
+            });
+
+            el.addEventListener('mousemove', (e) => {
+                if (!activeMagnifierClone || !cursorRing) return;
+                const rect = el.getBoundingClientRect();
+                
+                // Mouse position relative to the element
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // The size of the magnifying ring is 150px
+                const ringSize = 150; 
+                
+                // Center the specific hovered coordinate
+                const offsetX = (ringSize / 2) - (x * 1.5);
+                const offsetY = (ringSize / 2) - (y * 1.5);
+                
+                activeMagnifierClone.style.left = offsetX + 'px';
+                activeMagnifierClone.style.top = offsetY + 'px';
+            });
+
+            el.addEventListener('mouseleave', () => {
+                if (!cursorRing) return;
+                cursorRing.classList.remove('magnifying');
+                if (activeMagnifierClone) {
+                    activeMagnifierClone.remove();
+                    activeMagnifierClone = null;
+                }
+            });
+        });
+
         // 7. Scroll Progress
         const progressPath = document.getElementById('progress-path');
         if (progressPath) {
