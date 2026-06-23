@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurav Singh | Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Saurav Singh, Full Stack Developer specializing in MERN stack, React.js, Node.js, and MongoDB.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Interactive Cursor Glow -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Interactive Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    
+    <!-- Scroll Progress -->
+    <div class="progress-wrap" id="progress-wrap">
+        <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" id="progress-path" />
+        </svg>
+    </div>
+
+    <!-- Voice Command Button -->
+    <button id="voice-btn" class="magnetic" title="Click to speak command (e.g. 'skills', 'hire saurav')">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+    </button>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Saurav<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Bengaluru, Karnataka, India
+                    </div>
+                    <h1 class="name">Saurav Singh</h1>
+                    <h2 class="headline">Full Stack Developer | <span class="typewriter" id="typewriter"></span><span class="cursor">|</span></h2>
+                    <p class="subheadline">Building Responsive, Scalable & User-Focused Web Applications.</p>
+                    <a href="#projects" class="btn-primary magnetic">View My Work</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container reveal">
+                <h2 class="section-title">About Me</h2>
+                <div class="glass about-content">
+                    <p>I am a Full Stack Developer focused on building responsive, scalable, and user-friendly web applications using the MERN stack. I have hands-on experience developing modern frontend interfaces, integrating REST APIs, managing application state with Redux Toolkit, and building secure, authentication-based applications. I enjoy creating clean, performance-oriented interfaces and building practical utilities that solve real-world operational problems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container reveal">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <!-- Duplicate content for seamless looping -->
+                        <span class="chip">React.js</span>
+                        <span class="chip">TypeScript</span>
+                        <span class="chip">Node.js</span>
+                        <span class="chip">MongoDB</span>
+                        <span class="chip">Tailwind CSS</span>
+                        <span class="chip">Express.js</span>
+                        <span class="chip">Supabase</span>
+                        <span class="chip">Redux Toolkit</span>
+                        <span class="chip">Chakra UI</span>
+                        <span class="chip">REST APIs</span>
+                        <span class="chip">OAuth</span>
+                        <span class="chip">Git / GitHub</span>
+                        <span class="chip">Google Gemini AI</span>
+                        
+                        <!-- Duplicated set -->
+                        <span class="chip">React.js</span>
+                        <span class="chip">TypeScript</span>
+                        <span class="chip">Node.js</span>
+                        <span class="chip">MongoDB</span>
+                        <span class="chip">Tailwind CSS</span>
+                        <span class="chip">Express.js</span>
+                        <span class="chip">Supabase</span>
+                        <span class="chip">Redux Toolkit</span>
+                        <span class="chip">Chakra UI</span>
+                        <span class="chip">REST APIs</span>
+                        <span class="chip">OAuth</span>
+                        <span class="chip">Git / GitHub</span>
+                        <span class="chip">Google Gemini AI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container reveal">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="glass project-card">
+                        <h3 class="project-title">Dynamic GST Calculator</h3>
+                        <div class="project-tech">HTML, CSS, JavaScript</div>
+                        <p class="project-desc">A real-time tax calculation utility featuring reverse calculations, local ledger history, and customized tax bracket chips. Built with a premium glassmorphism UI.</p>
+                        <div class="project-links">
+                            <a href="https://digital-heroes-gst-calculator-blue.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-secondary primary">Live Demo</a>
+                            <a href="https://github.com/saurav-singh-web/digital-heroes-gst-calculator" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass project-card highlight-card">
+                        <div class="highlight-badge">Featured</div>
+                        <h3 class="project-title">GreenCart – AI-Powered Marketplace</h3>
+                        <div class="project-tech">MERN Stack, Google Gemini AI, Tailwind CSS</div>
+                        <p class="project-desc">Multi-vendor grocery e-commerce app with complete multi-tenant architecture, Kanban board order tracking, and Gemini AI-powered voice commerce.</p>
+                        <div class="project-links">
+                            <a href="https://greencart-m6o4.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-secondary primary">Live Demo</a>
+                            <a href="https://github.com/saurav-singh-web/Greencart" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass project-card">
+                        <h3 class="project-title">Dermstore – Full Stack E-commerce</h3>
+                        <div class="project-tech">MERN Stack, TypeScript</div>
+                        <p class="project-desc">A full-stack beauty products application featuring advanced filtering, secure authentication, dynamic cart workflows, and type-safe RESTful APIs.</p>
+                        <div class="project-links">
+                            <a href="https://dermstore-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-secondary primary">Live Demo</a>
+                            <a href="https://github.com/saurav-singh-web/Dermstore" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="glass project-card highlight-card">
+                        <div class="highlight-badge">Featured</div>
+                        <h3 class="project-title">SaaS Starter Platform</h3>
+                        <div class="project-tech">React, Supabase, PostgreSQL, Tailwind</div>
+                        <p class="project-desc">Multi-tenant SaaS application with Row Level Security (RLS), 6-tier role-based permissions, and complete authentication workflows.</p>
+                        <div class="project-links">
+                            <a href="https://saas-app-nine-eta.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-secondary primary">Live Demo</a>
+                            <a href="https://github.com/saurav-singh-web/saas-app" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="glass project-card">
+                        <h3 class="project-title">ShoppyGlobe – Food Ordering</h3>
+                        <div class="project-tech">React, Redux Toolkit, Tailwind CSS</div>
+                        <p class="project-desc">E-commerce application featuring complex state management, pagination, lazy loading, and cart persistence.</p>
+                        <div class="project-links">
+                            <a href="https://shoppy-globe-swart.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-secondary primary">Live Demo</a>
+                            <a href="https://github.com/saurav-singh-web/ShoppyGlobe" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <div class="container reveal">
+                <h2 class="section-title">Education & Certification</h2>
+                <div class="timeline">
+                    <div class="glass timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Full Stack Developer Placement Guarantee Course</h3>
+                            <h4>Internshala Trainings</h4>
+                            <span class="timeline-date">Nov 2025 – Apr 2026</span>
+                        </div>
+                    </div>
+                    <div class="glass timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Bachelor of Computer Application (BCA)</h3>
+                            <h4>Manipal University Jaipur</h4>
+                            <span class="timeline-date">Mar 2023 – Apr 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h2>Let's Build Something Amazing</h2>
+                <p>Feel free to reach out for collaborations or just a friendly hello.</p>
+                
+                <div class="social-links">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sauravsingh98866@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Email">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/saurav-singh-62876037a/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://github.com/saurav-singh-web" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+                
+                <p class="copyright">&copy; 2026 Saurav Singh. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script>
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 1. Cursor Glow
+        const cursorGlow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        });
+
+        // 2. Typewriter Effect
+        const words = ["MERN Stack", "React.js", "Node.js", "MongoDB", "TypeScript", "Tailwind CSS"];
+        let wordIndex = 0;
+        let isDeleting = false;
+        let txt = "";
+        const typewriterEl = document.getElementById('typewriter');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                txt = currentWord.substring(0, txt.length - 1);
+            } else {
+                txt = currentWord.substring(0, txt.length + 1);
+            }
+            typewriterEl.innerHTML = txt;
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && txt === currentWord) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && txt === "") {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        type();
+
+        // 3. Scroll Reveal
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Call once on load
+
+        // 4. 3D Tilt Effect
+        VanillaTilt.init(document.querySelectorAll(".project-card"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+        });
+
+        // 5. Magnetic Buttons
+        const magnetics = document.querySelectorAll('.magnetic, .btn-secondary, .social-link');
+        magnetics.forEach((btn) => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const h = rect.width / 2;
+                const v = rect.height / 2;
+                const x = e.clientX - rect.left - h;
+                const y = e.clientY - rect.top - v;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+            });
+        });
+
+        // 6. Custom Cursor Logic
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorRing = document.getElementById('cursor-ring');
+        
+        window.addEventListener('mousemove', (e) => {
+            if (cursorDot && cursorRing) {
+                cursorDot.style.opacity = '1';
+                cursorRing.style.opacity = '1';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+                cursorRing.animate({
+                    left: e.clientX + 'px',
+                    top: e.clientY + 'px'
+                }, { duration: 150, fill: "forwards" });
+            }
+        });
+
+        // Hide cursor when leaving window or right-clicking
+        document.addEventListener('mouseleave', () => {
+            if (cursorDot) cursorDot.style.opacity = '0';
+            if (cursorRing) cursorRing.style.opacity = '0';
+        });
+        document.addEventListener('contextmenu', () => {
+            if (cursorDot) cursorDot.style.opacity = '0';
+            if (cursorRing) cursorRing.style.opacity = '0';
+        });
+
+        const hoverTargets = document.querySelectorAll('a, button, .magnetic');
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => cursorRing?.classList.add('hovered'));
+            target.addEventListener('mouseleave', () => cursorRing?.classList.remove('hovered'));
+        });
+
+        // 7. Scroll Progress
+        const progressPath = document.getElementById('progress-path');
+        if (progressPath) {
+            const pathLength = progressPath.getTotalLength();
+            progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+            progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+            progressPath.style.strokeDashoffset = pathLength;
+            progressPath.getBoundingClientRect();
+            progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+            
+            const updateProgress = function () {
+                const scroll = window.scrollY;
+                const height = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = pathLength - (scroll * pathLength / height);
+                progressPath.style.strokeDashoffset = progress;
+                
+                if (scroll > 50) {
+                    document.getElementById('progress-wrap').classList.add('active-progress');
+                } else {
+                    document.getElementById('progress-wrap').classList.remove('active-progress');
+                }
+            }
+            window.addEventListener('scroll', updateProgress);
+            document.getElementById('progress-wrap').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // 8. Canvas Particles Background
+        const canvas = document.getElementById('bg-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width, height, particles;
+            
+            function initCanvas() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                particles = [];
+                for (let i = 0; i < 70; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        radius: Math.random() * 1.5 + 0.5
+                    });
+                }
+            }
+            initCanvas();
+            window.addEventListener('resize', initCanvas);
+            
+            let mouseX = -1000, mouseY = -1000;
+            window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+            
+            function animateCanvas() {
+                requestAnimationFrame(animateCanvas);
+                ctx.clearRect(0, 0, width, height);
+                
+                particles.forEach((p, index) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(139, 92, 246, 0.4)';
+                    ctx.fill();
+                    
+                    // Draw lines between particles
+                    for (let j = index + 1; j < particles.length; j++) {
+                        let p2 = particles[j];
+                        let dx = p.x - p2.x;
+                        let dy = p.y - p2.y;
+                        let dist = Math.sqrt(dx*dx + dy*dy);
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(139, 92, 246, ${0.15 - dist/100})`;
+                            ctx.stroke();
+                        }
+                    }
+                    
+                    // Connect to mouse
+                    let dx = p.x - mouseX;
+                    let dy = p.y - mouseY;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mouseX, mouseY);
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.3 - dist/150})`;
+                        ctx.stroke();
+                    }
+                });
+            }
+            animateCanvas();
+        }
+
+        // 9. Voice Command Navigation
+        const voiceBtn = document.getElementById('voice-btn');
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            
+            let isRecognizing = false;
+            
+            voiceBtn.addEventListener('click', () => {
+                if (isRecognizing) {
+                    try { recognition.stop(); } catch(e) {}
+                    return;
+                }
+                try {
+                    recognition.start();
+                    isRecognizing = true;
+                    voiceBtn.classList.add('listening');
+                } catch(e) {
+                    console.error("Speech Recognition Error:", e);
+                }
+            });
+
+            recognition.onresult = (event) => {
+                const command = event.results[0][0].transcript.toLowerCase();
+                console.log("Voice Command:", command);
+                if (command.includes('about')) document.getElementById('about').scrollIntoView({behavior: 'smooth'});
+                else if (command.includes('skill')) document.getElementById('skills').scrollIntoView({behavior: 'smooth'});
+                else if (command.includes('project')) document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
+                else if (command.includes('education')) document.getElementById('education').scrollIntoView({behavior: 'smooth'});
+                else if (command.includes('hire') || command.includes('contact') || command.includes('email')) {
+                    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=sauravsingh98866@gmail.com', '_blank');
+                }
+            };
+            
+            recognition.onend = () => {
+                isRecognizing = false;
+                voiceBtn.classList.remove('listening');
+            };
+        } else {
+            voiceBtn.style.display = 'none';
+        }
+
+        // 10. Konami Code (Cyberpunk Mode)
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        window.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex] || e.key.toLowerCase() === konamiCode[konamiIndex].toLowerCase()) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    document.body.classList.toggle('cyberpunk-mode');
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // 11. Audio Context Helper for Glitch
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playGlitchSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        // 12. Glitch Links
+        const glitchLinks = document.querySelectorAll('.project-links a');
+        glitchLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                playGlitchSound();
+                document.body.classList.add('glitch-active');
+                setTimeout(() => {
+                    document.body.classList.remove('glitch-active');
+                    window.open(link.href, link.target);
+                }, 400);
+            });
+        });
+
+        // 13. Card Explosions
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Ignore clicks on links/buttons
+                if (e.target.closest('.project-links') || e.target.closest('a')) return;
+                
+                const rect = card.getBoundingClientRect();
+                card.style.opacity = '0';
+                card.style.pointerEvents = 'none';
+                
+                const shards = [];
+                for (let i = 0; i < 60; i++) {
+                    const shard = document.createElement('div');
+                    shard.className = 'shard';
+                    shard.style.left = rect.left + Math.random() * rect.width + 'px';
+                    shard.style.top = rect.top + window.scrollY + Math.random() * rect.height + 'px';
+                    shard.style.width = Math.random() * 20 + 5 + 'px';
+                    shard.style.height = Math.random() * 20 + 5 + 'px';
+                    
+                    document.body.appendChild(shard);
+                    shards.push({
+                        el: shard,
+                        vx: (Math.random() - 0.5) * 20,
+                        vy: (Math.random() - 0.5) * 20 - 10,
+                        rot: Math.random() * 360,
+                        vrot: (Math.random() - 0.5) * 20
+                    });
+                }
+                
+                let start = Date.now();
+                function animateShards() {
+                    const now = Date.now();
+                    const dt = (now - start) / 16;
+                    start = now;
+                    
+                    let active = false;
+                    shards.forEach(s => {
+                        if (!s.el.parentElement) return;
+                        active = true;
+                        s.vy += 0.5; // gravity
+                        const currentLeft = parseFloat(s.el.style.left);
+                        const currentTop = parseFloat(s.el.style.top);
+                        s.el.style.left = currentLeft + s.vx + 'px';
+                        s.el.style.top = currentTop + s.vy + 'px';
+                        s.rot += s.vrot;
+                        s.el.style.transform = `rotate(${s.rot}deg)`;
+                    });
+                    
+                    if (active) requestAnimationFrame(animateShards);
+                }
+                animateShards();
+                
+                setTimeout(() => {
+                    shards.forEach(s => s.el.remove());
+                    card.style.opacity = '1';
+                    card.style.pointerEvents = 'auto';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
